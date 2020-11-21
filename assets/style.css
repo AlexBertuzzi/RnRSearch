@@ -13,3 +13,6 @@ h1 {
     font-size: large;
     color: #333
 }
+.uk-description-list>dt {
+    text-transform: none;
+}
