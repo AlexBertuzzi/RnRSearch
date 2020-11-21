@@ -1,9 +1,6 @@
-console.log("hi")
-$("#searchBtn").on("click", function(event) {
+$("#searchBtn").on("click", function (event) {
     event.preventDefault()
-    console.log("hi")
     var userFood = $("#userInput").val()
-    console.log(userFood)
 
     lookupUserFood(userFood)
 })
@@ -15,5 +12,16 @@ function lookupUserFood(food) {
         url: queryURL
     }).then(function (apiData) {
         console.log(apiData)
-})
+        for (var i = 0; i < 5; i++) {
+            var recipeTitle = apiData.hits[i].recipe.label
+            var ingredients = apiData.hits[i].recipe.ingredientLines
+            var recipeLink = apiData.hits[i].recipe.url
+            var servings = apiData.hits[i].recipe.yield
+            $("#" + i + "-recipeName").html(`<p> <a href="${recipeLink}" target="_blank">
+            ${recipeTitle} | Servings: ${servings} </a></p>`)
+
+            $("#" + i + "-recipeDescription").text(ingredients)
+        }
+
+    })
 }
