@@ -14,10 +14,7 @@ h1 {
     font-size: large;
 }
 .uk-description-list>dt {
-<<<<<<< HEAD
     text-transform: capitalize
-=======
-    text-transform: none;
 }
 .uk-width-1-1 {
     background: rgb(188,23,88);
@@ -39,5 +36,4 @@ h1 {
 }
 dt {
     font-size: large !important;
->>>>>>> main
 }

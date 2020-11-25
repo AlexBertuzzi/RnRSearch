@@ -27,11 +27,12 @@ $("#searchBtn").on("click", function (event) {
 			pairedWines = response.pairedWines
 			newDT = "<dt class='capitolize' id=" + "wineName-" + [i] + ">PlaceHolder Title</dt>"
 			newDD = "<dd id=" + "wineDescription-" + [i] + "></dd>"
-			shopBTN = "<button class=" + "uk-align-right>Shop this Wine!</button>"
+			shopBTN = "<button class=" + "uk-align-right" + " shop"+">Recommendations</button>"
 			$("#wines").append(newDT)
 			$("#wineName-" + [i]).after(newDD)
 			$("#wineName-" + [i]).after(shopBTN)
 			$("#wineName-" + [i]).text(pairedWines[i])
+			$(".shop-"+[i]).attr('id', pairedWines[i])
 			console.log(pairedWines[i])
 		}
 		for (var i = 0; i < numberOfWines; i++) {
@@ -86,11 +87,13 @@ function toTitleCase(strArr) {
 
 }
 
-
+$(".shop").on("click", function (event) {
+	var wine = $(this.id)
+	console.log(wine)
 const settings = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/recommendation?wine=merlot&maxPrice=50&minRating=0.7&number=3",
+	"url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/recommendation?wine="+ +"&maxPrice=50&minRating=0.7&number=4",
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "578be9e848msh571074644e04840p1eca5bjsnc902c4bed763",
@@ -101,3 +104,4 @@ const settings = {
 $.ajax(settings).done(function (response) {
 	console.log(response);
 });
+})
