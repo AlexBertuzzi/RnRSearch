@@ -14,5 +14,5 @@ h1 {
     color: #333
 }
 .uk-description-list>dt {
-    text-transform: none;
+    text-transform: capitalize
 }

@@ -17,47 +17,31 @@ $("#searchBtn").on("click", function (event) {
 
 	$.ajax(settings).done(function (response) {
 		console.log(response);
+		var pairedWines,
+			newDT,
+			newDD,
+			shopBTN;
 		$("#exp").text(response.pairingText)
 		var numberOfWines = response.pairedWines.length
-		for (var i = 0; i < response.pairedWines.length; i++) {
-			var pairedWines = response.pairedWines
-			var pairedWinesCapitolize = splitStrings(pairedWines)
-			var newDT = "<dt id=" + "wineName-" + [i] + ">PlaceHolder Title</dt>"
-			var newDD = "<dd id=" + "wineDescription-" + [i] + "></dd>"
+		for (var i = 0; i < numberOfWines; i++) {
+			pairedWines = response.pairedWines
+			newDT = "<dt class='capitolize' id=" + "wineName-" + [i] + ">PlaceHolder Title</dt>"
+			newDD = "<dd id=" + "wineDescription-" + [i] + "></dd>"
+			shopBTN = "<button class=" + "uk-align-right><a href=" + "https://www.getwineonline.com/main.asp?request=SEARCH&search="+pairedWines[i]+">Shop!</button>"
 			$("#wines").append(newDT)
 			$("#wineName-" + [i]).after(newDD)
-			$("#wineName-" + [i]).text(pairedWinesCapitolize[i])
-			console.log(i)
+			$("#wineName-" + [i]).after(shopBTN)
+			$("#wineName-" + [i]).text(pairedWines[i])
+			console.log(pairedWines[i])
 		}
-		console.log(pairedWinesCapitolize)
 		for (var i = 0; i < numberOfWines; i++) {
 			console.log(numberOfWines)
-			const settings2 = {
-				"async": true,
-				"crossDomain": true,
-				"url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/description?wine=" + pairedWines[i] + "",
-				"method": "GET",
-				"headers": {
-					"x-rapidapi-key": "578be9e848msh571074644e04840p1eca5bjsnc902c4bed763",
-					"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
-				}
-			}; getDesc(i)
-			
-			 function getDesc (i) {
-				$.ajax(settings2).done(function (response2) {
-				console.log(response2);
-				console.log(response2.wineDescription)
-				console.log(i)
-				testWD = response2.wineDescription
-				$("#wineDescription-" + [i]).text(response2.wineDescription)
-			
+			getDesc(i, pairedWines)
+		};
 
-			}
-			)
-		}
-	}
-	})
+	});
 })
+
 
 function splitStrings(arr) {
 	var resultArray = []
@@ -70,6 +54,26 @@ function splitStrings(arr) {
 	return resultArray
 }
 
+function getDesc(i, pairedWines) {
+	const settings2 = {
+		"async": true,
+		"crossDomain": true,
+		"url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/wine/description?wine=" + pairedWines[i] + "",
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-key": "578be9e848msh571074644e04840p1eca5bjsnc902c4bed763",
+			"x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+		}
+	};
+
+	$.ajax(settings2).done(function (response2) {
+		console.log(response2);
+		console.log(response2.wineDescription)
+		console.log(i)
+		$("#wineDescription-" + [i]).text(response2.wineDescription)
+	}
+	)
+}
 function toTitleCase(strArr) {
 	var result = ""
 	$.each(strArr, function (key, value) {
