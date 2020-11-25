@@ -1,5 +1,6 @@
 body {
     position: absolute;
+    background-image: url("background\ image.jpg");
 }
 h1 {
     margin-left: 20px;
@@ -11,8 +12,32 @@ h1 {
 }
 #exp {
     font-size: large;
-    color: #333
 }
 .uk-description-list>dt {
+<<<<<<< HEAD
     text-transform: capitalize
+=======
+    text-transform: none;
+}
+.uk-width-1-1 {
+    background: rgb(188,23,88);
+    /* background-image: url("corks\ image.jpg"); */
+}
+#recipe {
+    background: rgb(224,209,214);
+    background: radial-gradient(circle, rgba(224,209,214,1) 66%, rgba(188,23,88,1) 100%);
+    color:#333;
+}
+#wine {
+    background: rgb(188,23,88);
+    background: linear-gradient(0deg, rgba(188,23,88,1) 0%, rgb(230, 230, 230) 100%);
+    color:#333;
+}
+#card {
+    background: rgb(224,209,214);
+    color:#333;
+}
+dt {
+    font-size: large !important;
+>>>>>>> main
 }
