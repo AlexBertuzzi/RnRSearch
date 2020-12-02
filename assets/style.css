@@ -2,7 +2,6 @@ body {
     min-height: 100VH;
     background-image: url("background\ image.jpg");
     background-size: cover;
-    min-height: 100vh;
 }
 h1 {
     margin-left: 20px;
@@ -35,6 +34,7 @@ h1 {
     background: rgb(224,209,214);
     color:#333;
     max-width: 20%;
+    padding-left: 0px;
 }
 dt {
     font-size: large !important;
