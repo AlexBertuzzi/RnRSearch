@@ -1,11 +1,8 @@
-$("#searchBtn").on("click", function (event) {
-    event.preventDefault()
-    var userFood = $("#userInput").val()
+//favorites tab area
 
-    lookupUserFood(userFood)
-})
+console.log("hi")
 
-function lookupUserFood(food) {
+function lookupFavFood(food) {
     var queryURL = `https://api.edamam.com/search?q=${food}&app_id=2bf575c8&app_key=5b2e4bc88630bc1e0a7628be37de02fd`
     $.ajax({
         method: "GET",
@@ -31,22 +28,3 @@ function lookupUserFood(food) {
 
     })
 }
-$(".heartBtn").on("click", function () {
-
-    var favoriteRecipe = JSON.parse(localStorage.getItem("favRecipe")) || []
-    var currentRecipe = $(this).attr("data-recipe")
-    // console.log(currentRecipe)
-    var checkRepeat = favoriteRecipe.indexOf(currentRecipe)
-   // console.log(checkRepeat)
-    if (currentRecipe !== undefined && (checkRepeat === -1 || !favoriteRecipe)) {
-        favoriteRecipe.push(currentRecipe)
-        localStorage.setItem("favRecipe", JSON.stringify(favoriteRecipe))
-        this.classList.add("colorHeart")
-    }
-
-    // console.log(favoriteRecipe)
-
-})
-
-
-
