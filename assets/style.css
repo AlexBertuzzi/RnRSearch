@@ -37,3 +37,7 @@ h1 {
 dt {
     font-size: large !important;
 }
+
+.colorHeart[uk-icon="heart"] svg path {
+    fill: #ff0000;
+}
