@@ -3,7 +3,6 @@ $(document).ready(function () {
 		$("#wines").empty()
 		var food = $("#userInput").val()
 		event.preventDefault()
-		console.log(food)
 		const settings = {
 			"async": true,
 			"crossDomain": true,
@@ -16,7 +15,6 @@ $(document).ready(function () {
 		};
 
 		$.ajax(settings).done(function (response) {
-			console.log(response);
 			var pairedWines,
 				newDT,
 				newDD,
@@ -34,7 +32,6 @@ $(document).ready(function () {
 				shopBTN.data("wine",wineName)
 				shopBTN.on("click", function(event){
 					var wineName = $(event.target).data("wine")
-					console.log(wineName)
 
 					wineRec(wineName)
 				})
@@ -43,10 +40,8 @@ $(document).ready(function () {
 				$("#wineName-" + [i]).after(shopBTN)
 				$("#wineName-" + [i]).text(wineName)
 				$("#shop-" + [i]).addClass("uk-align-right")
-				console.log(pairedWines[i])
 			}
 			for (var i = 0; i < numberOfWines; i++) {
-				console.log(numberOfWines)
 				getDesc(i, pairedWines)
 			};
 
@@ -78,9 +73,6 @@ $(document).ready(function () {
 		};
 
 		$.ajax(settings2).done(function (response2) {
-			console.log(response2);
-			console.log(response2.wineDescription)
-			console.log(i)
 			$("#wineDescription-" + [i]).text(response2.wineDescription)
 		}
 		)
@@ -108,7 +100,6 @@ function wineRec(wine) {
 		}
 	};
 	$.ajax(settings).done(function (response) {
-		console.log(response);
 		var recommendedWines = response.recommendedWines;
 		for (var i = 0; i <recommendedWines.length; i++) {
 			$("#card-"+(i+1)).find("h3").text(recommendedWines[i].title)
@@ -119,20 +110,4 @@ function wineRec(wine) {
 
 	});
 }
-
-// $('#shop-0').on('click', function () {
-// 	var wine = (this.id)
-// 	console.log(this.id)
-// 	wineRec(wine)
-// });
-
-// $('#shop-1').on('click', function () {
-// 	var wine = (this.id)
-// 	wineRec(wine)
-// });
-
-// $('#shop-2').on('click', function () {
-// 	var wine = (this.id)
-// 	wineRec(wine)
-// });
 })

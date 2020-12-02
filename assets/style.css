@@ -1,5 +1,5 @@
 body {
-    position: absolute;
+    min-height: 100VH;
     background-image: url("background\ image.jpg");
 }
 h1 {
@@ -44,4 +44,7 @@ a {
 
 .colorHeart[uk-icon="heart"] svg path {
     fill: #ff0000;
+}
+div > img {
+    mix-blend-mode: multiply;
 }
