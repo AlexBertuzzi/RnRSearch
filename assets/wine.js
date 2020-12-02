@@ -1,8 +1,13 @@
 $(document).ready(function () {
+	var food ="turkey"
+	start(food)
 	$("#searchBtn").on("click", function (event) {
 		$("#wines").empty()
-		var food = $("#userInput").val()
+		food = $("#userInput").val()
 		event.preventDefault()
+		start(food)
+	})
+	function start(){
 		const settings = {
 			"async": true,
 			"crossDomain": true,
@@ -46,7 +51,8 @@ $(document).ready(function () {
 			};
 
 		});
-	})
+	}
+	//})
 
 
 	function splitStrings(arr) {

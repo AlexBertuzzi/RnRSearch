@@ -1,3 +1,6 @@
+var defaultFood ="turkey"
+lookupUserFood(defaultFood)
+
 $("#searchBtn").on("click", function (event) {
     event.preventDefault()
     var userFood = $("#userInput").val()
@@ -11,7 +14,7 @@ function lookupUserFood(food) {
         method: "GET",
         url: queryURL
     }).then(function (apiData) {
-        //console.log(apiData)
+        console.log(apiData)
         for (var i = 0; i < 5; i++) {
             var foodPic = apiData.hits[i].recipe.image
             var recipeTitle = apiData.hits[i].recipe.label
