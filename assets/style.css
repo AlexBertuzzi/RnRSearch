@@ -41,3 +41,7 @@ dt {
 a {
     font-size: larger;
 }
+
+.colorHeart[uk-icon="heart"] svg path {
+    fill: #ff0000;
+}
