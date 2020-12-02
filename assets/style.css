@@ -30,10 +30,14 @@ h1 {
     background: linear-gradient(0deg, rgba(188,23,88,1) 0%, rgb(230, 230, 230) 100%);
     color:#333;
 }
-#card {
+.card {
     background: rgb(224,209,214);
     color:#333;
+    max-width: 20%;
 }
 dt {
     font-size: large !important;
+}
+a {
+    font-size: larger;
 }

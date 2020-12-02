@@ -20,18 +20,28 @@ $(document).ready(function () {
 			var pairedWines,
 				newDT,
 				newDD,
+				wineName,
 				shopBTN;
 			$("#exp").text(response.pairingText)
 			var numberOfWines = response.pairedWines.length
 			for (var i = 0; i < numberOfWines; i++) {
-				pairedWines = response.pairedWines
+				pairedWines = response.pairedWines;
+				wineName = pairedWines[i];
 				newDT = "<dt class='capitolize' id=" + "wineName-" + [i] + ">PlaceHolder Title</dt>"
 				newDD = "<dd id=" + "wineDescription-" + [i] + "></dd>"
-				shopBTN = "<button id='shop-" + [i] + "'>Recommendations</button>"
+				// shopBTN = "<button id='shop-" + [i] + "'>Recommendations</button>"
+				shopBTN = $('<button></button>').attr("id", "shop-"+i).text("Recommendations")
+				shopBTN.data("wine",wineName)
+				shopBTN.on("click", function(event){
+					var wineName = $(event.target).data("wine")
+					console.log(wineName)
+
+					wineRec(wineName)
+				})
 				$("#wines").append(newDT)
 				$("#wineName-" + [i]).after(newDD)
 				$("#wineName-" + [i]).after(shopBTN)
-				$("#wineName-" + [i]).text(pairedWines[i])
+				$("#wineName-" + [i]).text(wineName)
 				$("#shop-" + [i]).addClass("uk-align-right")
 				console.log(pairedWines[i])
 			}
@@ -86,7 +96,7 @@ $(document).ready(function () {
 		return result
 
 	}
-function wineRec() {
+function wineRec(wine) {
 	const settings = {
 		"async": true,
 		"crossDomain": true,
@@ -99,22 +109,30 @@ function wineRec() {
 	};
 	$.ajax(settings).done(function (response) {
 		console.log(response);
+		var recommendedWines = response.recommendedWines;
+		for (var i = 0; i <recommendedWines.length; i++) {
+			$("#card-"+(i+1)).find("h3").text(recommendedWines[i].title)
+			$("#card-"+(i+1)).find("p").text(recommendedWines[i].description)
+			$("#card-"+(i+1)).find("a").attr("href",recommendedWines[i].link).attr("target", "_blank")
+			$("#card-"+(i+1)).find("img").attr("src",recommendedWines[i].imageUrl)
+		}
+
 	});
 }
 
-$('#shop-0').on('click', function () {
-	var wine = (this.id)
-	console.log(this.id)
-	wineRec(wine)
-});
+// $('#shop-0').on('click', function () {
+// 	var wine = (this.id)
+// 	console.log(this.id)
+// 	wineRec(wine)
+// });
 
-$('#shop-1').on('click', function () {
-	var wine = (this.id)
-	wineRec(wine)
-});
+// $('#shop-1').on('click', function () {
+// 	var wine = (this.id)
+// 	wineRec(wine)
+// });
 
-$('#shop-2').on('click', function () {
-	var wine = (this.id)
-	wineRec(wine)
-});
+// $('#shop-2').on('click', function () {
+// 	var wine = (this.id)
+// 	wineRec(wine)
+// });
 })
