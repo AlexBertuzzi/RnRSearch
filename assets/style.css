@@ -1,5 +1,5 @@
 body {
-    position: absolute;
+    min-height: 100VH;
     background-image: url("background\ image.jpg");
 }
 h1 {
@@ -14,7 +14,7 @@ h1 {
     font-size: large;
 }
 .uk-description-list>dt {
-    text-transform: none;
+    text-transform: capitalize
 }
 .uk-width-1-1 {
     background: rgb(188,23,88);
@@ -30,14 +30,21 @@ h1 {
     background: linear-gradient(0deg, rgba(188,23,88,1) 0%, rgb(230, 230, 230) 100%);
     color:#333;
 }
-#card {
+.card {
     background: rgb(224,209,214);
     color:#333;
+    max-width: 20%;
 }
 dt {
     font-size: large !important;
 }
+a {
+    font-size: larger;
+}
 
 .colorHeart[uk-icon="heart"] svg path {
     fill: #ff0000;
+}
+div > img {
+    mix-blend-mode: multiply;
 }
