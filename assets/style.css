@@ -1,6 +1,8 @@
 body {
-    position: absolute;
+    
     background-image: url("background\ image.jpg");
+    background-size: cover;
+    min-height: 100vh;
 }
 h1 {
     margin-left: 20px;
@@ -16,9 +18,8 @@ h1 {
 .uk-description-list>dt {
     text-transform: none;
 }
-.uk-width-1-1 {
+#fullBar {
     background: rgb(188,23,88);
-    /* background-image: url("corks\ image.jpg"); */
 }
 #recipe {
     background: rgb(224,209,214);
