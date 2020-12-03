@@ -26,7 +26,7 @@ Users are able to click on the recommendations button next to a wine that will p
 
 ### Mock
 
-![actual-gif](will be located in assets folder)
+![actual-gif](./assets/lazy-foodie-demo.gif)
 
 ### URL of Depoloyed Application
 
